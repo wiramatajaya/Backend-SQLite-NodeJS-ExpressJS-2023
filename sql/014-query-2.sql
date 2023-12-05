@@ -1,4 +1,4 @@
--- Author: Ej Sobrepena ej.sobrepena@tuni.fi
+-- Author: Ej Sobrepena <ej.sobrepena@tuni.fi>
 -- Date: 2023-12-04
 -- File: 014-query-2.sql
 
