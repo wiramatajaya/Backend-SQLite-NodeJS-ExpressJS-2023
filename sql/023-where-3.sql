@@ -2,9 +2,11 @@
 -- Date: 2023-12-07
 -- File: 015-query-3.sql
 
-SELECT DISTINCT job
+SELECT ename, sal
 FROM emp
-ORDER BY job
+WHERE sal < 1500
+    OR
+    sal > 2850
 ;
 
 -- End of file
