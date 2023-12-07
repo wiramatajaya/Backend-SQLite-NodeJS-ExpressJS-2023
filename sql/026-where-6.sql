@@ -1,6 +1,6 @@
 -- Author: Ej Sobrepena <ej.sobrepena@tuni.fi>
 -- Date: 2023-12-07
--- File: 015-query-3.sql
+-- File: 026-where-6.sql
 
 SELECT ename AS "Employee",
        sal AS "Monthly Salary"
