@@ -4,7 +4,7 @@
 
 SELECT empno,
        ename,
-       salary * 12 AS "ANNUAL SALARY"
+       sal * 12 AS "ANNUAL SALARY"
 FROM emp
 ;
 
