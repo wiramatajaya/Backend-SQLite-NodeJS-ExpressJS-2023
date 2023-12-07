@@ -4,7 +4,7 @@
 
 SELECT DISTINCT job
 FROM emp
-ORDER BY job
+ORDER BY job ASC
 ;
 
 -- End of file
