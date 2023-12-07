@@ -10,5 +10,4 @@ WHERE job IN ('CLERK', 'ANALYST')
     AND sal NOT IN (1000, 5000)
 ;
 
-
 -- End of file
