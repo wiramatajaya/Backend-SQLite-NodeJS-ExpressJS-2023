@@ -3,16 +3,17 @@
 -- File: 031-order-by-1.sql
 
 SELECT
-    ename,
-    sal,
-    sal * 1.15 "new salary"
+    e.ename,
+    e.sal,
+    e.sal * 1.15 "new salary"
 FROM
-    emp
+    emp e
+JOIN
+    emp m ON e.mgr = m.empno
 WHERE
-    mgr = (SELECT empno FROM emp WHERE LOWER(ename) = 'blake')
+    LOWER(m.ename) = 'blake'
 ORDER BY
-    "new salary" ASC,
-    ename ASC
-;
+    "new salary",
+    e.ename;
 
 -- End of file
