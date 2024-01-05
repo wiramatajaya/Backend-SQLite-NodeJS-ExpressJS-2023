@@ -10,5 +10,4 @@ WHERE
     ename LIKE '__a%'
 ;
 
-
 -- End of file
