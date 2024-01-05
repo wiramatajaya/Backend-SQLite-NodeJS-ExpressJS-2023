@@ -8,10 +8,10 @@ SELECT
 FROM
     emp
 WHERE
-    ename LIKE '_[aeiouyAEIOUY]%'
-    AND (job LIKE '%SALES%' OR job LIKE '%ANALYST%')
+    LOWER(ename) LIKE '_[aeiouyAEIOUY]%'
+    AND (LOWER(job) LIKE '%sales%' OR LOWER(job) LIKE '%analyst%')
 ORDER BY
-    deptno,
+    deptno ASC,
     ename
 ;
 
