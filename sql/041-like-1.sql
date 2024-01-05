@@ -7,7 +7,7 @@ SELECT
 FROM
     emp
 WHERE
-    ename LIKE '__a%'
+    LOWER(ename) LIKE '__a%'
 ;
 
 -- End of file
