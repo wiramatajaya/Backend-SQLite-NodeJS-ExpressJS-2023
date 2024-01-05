@@ -8,7 +8,7 @@ FROM
     emp
 WHERE
     (deptno = 10 OR mgr = 7782)
-    AND ename LIKE '%L%L%'
+    AND LOWER(ename) LIKE '%l%l%'
 ;
 
 -- End of file
