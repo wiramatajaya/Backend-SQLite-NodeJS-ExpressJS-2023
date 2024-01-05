@@ -11,8 +11,8 @@ SELECT
 FROM
     emp
 ORDER BY
-    "New Job Name",
-    "Name"
+    "New Job Name" ASC,
+    "Name" ASC
 ;
 
 -- End of file
