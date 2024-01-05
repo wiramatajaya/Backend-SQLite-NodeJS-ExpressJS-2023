@@ -1,6 +1,6 @@
 -- Author: Ej Sobrepena <ej.sobrepena@tuni.fi>
 -- Date: 2024-01-05
--- File: 032-order-by-2.sql
+-- File: 033-order-by-3.sql
 
 SELECT
     deptno AS "Dept",
