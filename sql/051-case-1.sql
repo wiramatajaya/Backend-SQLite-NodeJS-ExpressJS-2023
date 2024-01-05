@@ -5,14 +5,13 @@
 SELECT
     ename "Name",
     CASE
-        WHEN job = 'SALESMAN' THEN 'SALES PERSON'
+        WHEN LOWER(job) = 'salesman' THEN 'SALES PERSON'
         ELSE job
     END "New Job Name"
 FROM
     emp
 ORDER BY
     "New Job Name" ASC,
-    "Name" ASC
-;
+    "Name" ASC;
 
 -- End of file
