@@ -12,7 +12,7 @@ WHERE
     AND (LOWER(job) LIKE '%sales%' OR LOWER(job) LIKE '%analyst%')
 ORDER BY
     deptno ASC,
-    ename
+    ename ASC
 ;
 
 -- End of file
