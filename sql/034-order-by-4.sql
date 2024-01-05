@@ -12,8 +12,8 @@ FROM
 WHERE
     comm > sal * 1.10
 ORDER BY
-    ename,
-    sal,
-    comm;
+    ename ASC,
+    sal ASC,
+    comm ASC;
 
 -- End of file
