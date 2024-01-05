@@ -5,7 +5,7 @@
 SELECT
     deptno AS "Dept",
     ename AS "Employee",
-    sal * 0.31 AS "Tax"
+    sal * 0.31 AS "Taxes"
 FROM
     emp
 WHERE
