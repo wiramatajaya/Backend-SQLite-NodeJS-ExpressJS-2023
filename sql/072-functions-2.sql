@@ -3,7 +3,7 @@
 -- File: 072-functions-2.sql
 
 SELECT
-    ename "Name",
+    LOWER(ename) "Name",
     LENGTH(ename) "Characters"
 FROM
     emp
