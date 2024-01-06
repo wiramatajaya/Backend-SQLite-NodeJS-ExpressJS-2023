@@ -4,11 +4,9 @@
 
 SELECT
     job,
-    COUNT(*) "count of managers"
+    COUNT(DISTINCT mgr) "count of managers"
 FROM
     emp
-WHERE
-    mgr IS NOT NULL
 GROUP BY
     job
 ;
