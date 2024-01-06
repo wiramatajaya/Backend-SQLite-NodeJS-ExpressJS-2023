@@ -5,7 +5,7 @@
 SELECT
     ename,
     CASE
-        WHEN deptno = 30 AND comm IS NULL THEN 100
+        WHEN deptno = 30 AND (comm IS NULL OR comm = 0) THEN 100
         WHEN deptno = 30 AND comm IS NOT NULL THEN comm * 1.05
         ELSE comm
     END "comm"
