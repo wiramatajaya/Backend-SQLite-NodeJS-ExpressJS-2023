@@ -8,9 +8,9 @@ SELECT
     e.deptno,
     d.dname
 FROM
-    emp e
+    emp AS e
 JOIN
-    dept d ON e.deptno = d.deptno
+    dept AS d ON e.deptno = d.deptno
 WHERE
     (LOWER(d.dname) = 'accounting' OR LOWER(d.dname) = 'sales' OR LOWER(d.dname) = 'operations') AND e.sal > 1000
 ORDER BY
