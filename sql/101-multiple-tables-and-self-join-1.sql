@@ -3,10 +3,10 @@
 -- File: 101-multiple-tables-and-self-join-1.sql
 
 SELECT
-    e.ename AS "Employee",
-    e.empno AS "Emp#",
     m.ename AS "Manager",
-    m.empno AS "Mgr#"
+    m.empno AS "Mgr#",
+    e.ename AS "Employee",
+    e.empno AS "Emp#"
 FROM
     emp AS e
 JOIN
@@ -14,7 +14,8 @@ JOIN
 WHERE
     LOWER(m.ename) IN ('blake', 'ford', 'scott')
 ORDER BY
-    "Manager", "Employee"
+    "Manager" ASC,
+    "Employee" ASC
 ;
 
 -- End of file
