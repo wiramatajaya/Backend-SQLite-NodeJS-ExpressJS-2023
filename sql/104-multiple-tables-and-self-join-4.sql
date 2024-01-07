@@ -9,14 +9,13 @@ SELECT
     m.ename AS "Manager"
 FROM
     emp AS e
-JOIN
+INNER JOIN
     emp AS m ON e.mgr = m.empno
-JOIN
+INNER JOIN
     dept AS d ON e.deptno = d.deptno
 WHERE
     LOWER(m.ename) IN ('blake', 'ford', 'jones') AND m.sal > (SELECT hisal FROM salgrade WHERE grade = 3)
 ORDER BY
-    "Location" ASC, "Manager" ASC, "Employee" ASC
-;
+    "Location", "Manager", "Employee";
 
 -- End of file
