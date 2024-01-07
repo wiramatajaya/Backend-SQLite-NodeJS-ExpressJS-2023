@@ -3,7 +3,7 @@
 -- File: 103-multiple-tables-and-self-join-3.sql
 
 SELECT
-    e.ename AS "Employee"
+    e.ename
 FROM
     emp AS e
 JOIN
@@ -11,7 +11,7 @@ JOIN
 WHERE
     e.sal > m.sal
 ORDER BY
-    "Employee"
+    e.ename ASC
 ;
 
 -- End of file
