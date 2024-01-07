@@ -8,13 +8,13 @@ SELECT
     e.ename AS "Employee",
     m.ename AS "Manager"
 FROM
-    emp e
+    emp AS e
 JOIN
-    emp m ON e.mgr = m.empno
+    emp AS m ON e.mgr = m.empno
 JOIN
-    dept d ON e.deptno = d.deptno
+    dept AS d ON e.deptno = d.deptno
 WHERE
-    m.ename IN ('BLAKE', 'FORD', 'JONES') AND m.sal > (SELECT sal FROM salgrade WHERE grade = 3)
+    LOWER(m.ename) IN ('blake', 'ford', 'jones') AND m.sal > (SELECT sal FROM salgrade WHERE grade = 3)
 ORDER BY
     "Location", "Manager", "Employee"
 ;
