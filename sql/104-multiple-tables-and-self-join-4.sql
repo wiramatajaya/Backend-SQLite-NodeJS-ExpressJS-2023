@@ -14,10 +14,11 @@ INNER JOIN
 INNER JOIN
     dept AS d ON e.deptno = d.deptno
 INNER JOIN
-    salgrade AS s ON m.sal > s.hisal AND s.grade = 3
+    salgrade AS s ON m.sal BETWEEN s.losal AND s.hisal
 WHERE
-    LOWER(m.ename) IN ('blake', 'ford', 'jones')
+    LOWER(m.ename) IN ('blake', 'ford', 'jones') AND s.grade = 3
 ORDER BY
-    "Location", "Manager", "Employee";
+    "Location", "Manager", "Employee"
+;
 
 -- End of file
