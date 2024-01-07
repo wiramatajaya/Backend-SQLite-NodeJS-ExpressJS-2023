@@ -3,12 +3,11 @@
 -- File: 081-group-functions-1.sql
 
 SELECT
-    job,
-    COUNT(DISTINCT mgr) "count of managers"
+    COUNT(*) "count of managers"
 FROM
     emp
-GROUP BY
-    job
+WHERE
+    LOWER(job) IN ('manager', 'president')
 ;
 
 -- End of file
