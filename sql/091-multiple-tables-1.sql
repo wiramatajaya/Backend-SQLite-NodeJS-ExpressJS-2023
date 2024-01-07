@@ -3,13 +3,13 @@
 -- File: 091-multiple-tables-1.sql
 
 SELECT
-    e.ename,
-    e.deptno,
-    d.dname
+    e.ename AS "Employee",
+    e.deptno AS "Emp#",
+    d.dname AS "Department"
 FROM
-    emp e
+    emp AS e
 JOIN
-    dept d ON e.deptno = d.deptno
+    dept AS d ON e.deptno = d.deptno
 WHERE
     LOWER(d.loc) = 'dallas' OR LOWER(e.job) = 'salesman'
 ORDER BY
