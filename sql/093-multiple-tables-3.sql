@@ -5,8 +5,7 @@
 SELECT
     e.ename,
     d.dname,
-    d.loc,
-    e.comm
+    d.loc
 FROM
     emp AS e
 JOIN
