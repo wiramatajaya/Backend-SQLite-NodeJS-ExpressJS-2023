@@ -5,13 +5,14 @@
 SELECT
     e.ename,
     d.dname,
-    d.loc
+    d.loc,
+    e.comm
 FROM
     emp AS e
 JOIN
     dept AS d ON e.deptno = d.deptno
 WHERE
-    e.comm IS NOT NULL
+    e.comm IS NOT NULL AND e.comm != 0
 ORDER BY
     e.ename
 ;
