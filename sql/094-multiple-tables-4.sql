@@ -6,9 +6,9 @@ SELECT
     e.ename,
     d.dname
 FROM
-    emp e
+    emp AS e
 JOIN
-    dept d ON e.deptno = d.deptno
+    dept AS d ON e.deptno = d.deptno
 WHERE
     LOWER(e.ename) LIKE '%a%' AND e.sal > 1100 AND e.sal <= 2200
 ORDER BY
