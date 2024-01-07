@@ -8,11 +8,11 @@ SELECT
     m.ename AS "Manager",
     m.empno AS "Mgr#"
 FROM
-    emp e
+    emp AS e
 JOIN
-    emp m ON e.mgr = m.empno
+    emp AS m ON e.mgr = m.empno
 WHERE
-    m.ename IN ('BLAKE', 'FORD', 'SCOTT')
+    LOWER(m.ename) IN ('blake', 'ford', 'scott')
 ORDER BY
     "Manager", "Employee"
 ;
