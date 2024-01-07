@@ -5,9 +5,9 @@
 SELECT DISTINCT
     e.job
 FROM
-    emp e
+    emp AS e
 JOIN
-    dept d ON e.deptno = d.deptno
+    dept AS d ON e.deptno = d.deptno
 WHERE
     LOWER(d.loc) IN ('boston', 'new york')
 ORDER BY
