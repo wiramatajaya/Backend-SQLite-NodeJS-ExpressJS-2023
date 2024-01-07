@@ -6,7 +6,7 @@ CREATE TABLE inventory (
     id INT PRIMARY KEY NOT NULL UNIQUE,
     item VARCHAR(255),
     worth INT,
-    comment TEXT
+    comment VARCHAR(255)
 )
 ;
 
