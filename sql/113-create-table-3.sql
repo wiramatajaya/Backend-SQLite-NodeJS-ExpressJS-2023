@@ -8,7 +8,7 @@ CREATE TABLE weather (
     high DECIMAL(5,2),
     low DECIMAL(5,2),
     sig VARCHAR(2),
-    comment TEXT
+    comment VARCHAR(255)
 )
 ;
 
