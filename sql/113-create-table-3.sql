@@ -8,7 +8,7 @@ CREATE TABLE weather (
     high REAL,
     low REAL,
     sig CHAR(2),
-    comment TEXT
+    comment VARCHAR(255)
 )
 ;
 
