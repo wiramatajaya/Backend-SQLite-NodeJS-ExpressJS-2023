@@ -13,7 +13,7 @@ JOIN
 WHERE
     LOWER(d.loc) = 'dallas' OR LOWER(e.job) = 'salesman'
 ORDER BY
-    e.ename
+    e.ename ASC
 ;
 
 -- End of file
