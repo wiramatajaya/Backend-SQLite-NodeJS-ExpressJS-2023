@@ -7,7 +7,7 @@ CREATE TABLE weather (
     time_of_reading TIMESTAMP,
     high DECIMAL,
     low DECIMAL,
-    sig VARCHAR(2),
+    sig VARCHAR(255),
     comment VARCHAR(255)
 )
 ;
