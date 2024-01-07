@@ -5,9 +5,9 @@
 SELECT
     e.ename AS "Employee"
 FROM
-    emp e
+    emp AS e
 JOIN
-    emp m ON e.mgr = m.empno
+    emp AS m ON e.mgr = m.empno
 WHERE
     e.sal > m.sal
 ORDER BY
