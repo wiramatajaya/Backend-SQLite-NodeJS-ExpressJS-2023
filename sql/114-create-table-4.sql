@@ -1,0 +1,13 @@
+-- Author: Ej Sobrepena <ej.sobrepena@tuni.fi>
+-- Date: 2024-01-07
+-- File: 114-create-table-4.sql
+
+CREATE TABLE inventory (
+    id INT PRIMARY KEY,
+    item VARCHAR(255),
+    worth INT,
+    comment VARCHAR(255)
+)
+;
+
+-- End of file
