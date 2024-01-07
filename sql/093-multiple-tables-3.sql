@@ -12,10 +12,9 @@ FROM
 JOIN
     dept AS d ON e.deptno = d.deptno
 WHERE
-    e.comm IS NOT NULL AND e.comm != 0
+    e.comm IS NOT NULL AND e.comm <> 0
 ORDER BY
     e.ename
 ;
-
 
 -- End of file
