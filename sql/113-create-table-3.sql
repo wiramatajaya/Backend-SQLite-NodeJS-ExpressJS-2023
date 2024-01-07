@@ -5,9 +5,9 @@
 CREATE TABLE weather (
     id INT PRIMARY KEY NOT NULL UNIQUE,
     time_of_reading TIMESTAMP,
-    high DECIMAL(5,2),
-    low DECIMAL(5,2),
-    sig VARCHAR(2),
+    high DECIMAL,
+    low DECIMAL,
+    sig CHAR(2),
     comment VARCHAR(255)
 )
 ;
