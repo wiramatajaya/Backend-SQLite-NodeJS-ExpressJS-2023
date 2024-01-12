@@ -3,8 +3,10 @@ const sqlite3 = require('sqlite3').verbose();
 const app = express();
 const port = 8000;
 
+const HTTP_STATUS_OK = 200;
 const HTTP_STATUS_BAD_REQUEST = 400;
 const HTTP_STATUS_NOT_FOUND = 404;
+const HTTP_STATUS_INTERNAL_SERVER_ERROR = 500;
 const DB_PATH = './database.db';
 
 // Open database in memory
@@ -26,13 +28,14 @@ app.get('/user/:id', (req, res) => {
     let params = [req.params.id];
     db.get(sql, params, (err, row) => {
         if (err) {
-            return console.error(err.message);
+            res.status(HTTP_STATUS_INTERNAL_SERVER_ERROR).json({ "error": err.message });
+            return;
         }
         if (!row) {
-            return res.status(HTTP_STATUS_NOT_FOUND).json({ "message": "User not found" });
+            res.status(HTTP_STATUS_NOT_FOUND).json({ "message": "User not found" });
+            return;
         }
-        res.setHeader('Content-Type', 'application/json');
-        res.send(row);
+        res.status(HTTP_STATUS_OK).json(row);
     });
 });
 
@@ -42,7 +45,8 @@ app.get('/user', (req, res) => {
         let params = [req.query.last.toLowerCase(), req.query.dept];
         db.all(sql, params, (err, rows) => {
             if (err) {
-                throw err;
+                res.status(HTTP_STATUS_INTERNAL_SERVER_ERROR).json({ "error": err.message });
+                return;
             }
             if (rows.length === 0) {
                 return res.status(HTTP_STATUS_NOT_FOUND).json({ "message": 'No users found' });
