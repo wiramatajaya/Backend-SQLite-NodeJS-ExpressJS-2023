@@ -8,6 +8,7 @@ const HTTP_STATUS_BAD_REQUEST = 400;
 const HTTP_STATUS_NOT_FOUND = 404;
 const HTTP_STATUS_INTERNAL_SERVER_ERROR = 500;
 const DB_PATH = './database.db';
+const bodyParser = require('body-parser');
 
 // Open database in memory
 let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READONLY, (err) => {
@@ -65,6 +66,27 @@ app.get('/user', (req, res) => {
     } else {
         res.status(HTTP_STATUS_BAD_REQUEST).json({ 'message': 'Bad request. Missing required query parameters' });
     }
+});
+
+app.use(bodyParser.json()); // for parsing application/json
+
+app.post('/user', (req, res) => {
+    if (!req.body.first || !req.body.last || !req.body.dept) {
+        return res.status(HTTP_STATUS_BAD_REQUEST).json({ 'message': 'Bad request. Missing required body parameters' });
+    }
+
+    let sql = `INSERT INTO Users (first, last, dept) VALUES (?, ?, ?)`;
+    let params = [req.body.first, req.body.last, req.body.dept];
+    db.run(sql, params, function(err) {
+        if (err) {
+            res.status(HTTP_STATUS_INTERNAL_SERVER_ERROR).json({ "error": err.message });
+            return;
+        }
+        res.status(HTTP_STATUS_OK).json({
+            "message": "User added successfully",
+            "id": this.lastID
+        });
+    });
 });
 
 app.listen(port, () => {
