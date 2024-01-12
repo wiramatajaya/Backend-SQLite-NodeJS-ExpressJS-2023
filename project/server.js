@@ -110,6 +110,21 @@ app.patch('/user/:id', (req, res) => {
     });
 });
 
+app.delete('/user/:id', (req, res) => {
+    let sql = `DELETE FROM Users WHERE id = ?`;
+    let params = [req.params.id];
+    db.run(sql, params, function(err) {
+        if (err) {
+            res.status(HTTP_STATUS_INTERNAL_SERVER_ERROR).json({ "error": err.message });
+            return;
+        }
+        res.status(HTTP_STATUS_OK).json({
+            "message": "User deleted successfully",
+            "changes": this.changes
+        });
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
