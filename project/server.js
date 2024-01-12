@@ -36,6 +36,33 @@ app.get('/user/:id', (req, res) => {
     });
 });
 
+app.get('/user', (req, res) => {
+    if (req.query.last && req.query.dept) {
+        let sql = `SELECT * FROM Users WHERE LOWER(last) = ? AND dept = ?`;
+        let params = [req.query.last.toLowerCase(), req.query.dept];
+        db.all(sql, params, (err, rows) => {
+            if (err) {
+                throw err;
+            }
+            if (rows.length === 0) {
+                return res.status(HTTP_STATUS_NOT_FOUND).json({ "message": 'No users found' });
+            }
+            res.setHeader('Content-Type', 'application/json');
+            res.send(rows);
+        });
+    } else if (Object.keys(req.query).length === 0) {
+        db.all(`SELECT * FROM Users`, (err, rows) => {
+            if (err) {
+                throw err;
+            }
+            res.setHeader('Content-Type', 'application/json');
+            res.send(rows);
+        });
+    } else {
+        res.status(HTTP_STATUS_BAD_REQUEST).json({ 'message': 'Bad request. Missing required query parameters' });
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
