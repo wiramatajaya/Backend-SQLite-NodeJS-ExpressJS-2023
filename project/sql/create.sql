@@ -1,0 +1,7 @@
+
+CREATE TABLE IF NOT EXISTS Users (
+    id INTEGER PRIMARY KEY,
+    first TEXT NOT NULL,
+    last TEXT NOT NULL,
+    dept INTEGER
+);
