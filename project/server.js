@@ -21,3 +21,18 @@ app.get('/', (req, res) => {
     res.status(HTTP_STATUS_BAD_REQUEST).json({'message' : 'Bad request. No such endpoint'});
 })
 
+app.get('/user/:id', (req, res) => {
+    let sql = `SELECT * FROM Users WHERE id = ?`;
+    let params = [req.params.id];
+    db.get(sql, params, (err, row) => {
+        if (err) {
+            return console.error(err.message);
+        }
+        if (!row) {
+            return res.status(HTTP_STATUS_NOT_FOUND).json({ "message": "User not found" });
+        }
+        res.setHeader('Content-Type', 'application/json');
+        res.send(row);
+    });
+});
+
