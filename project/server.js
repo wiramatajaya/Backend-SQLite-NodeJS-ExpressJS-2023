@@ -18,7 +18,7 @@ let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READONLY, (err) => {
 
 app.get('/', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
-    res.status(HTTP_STATUS_BAD_REQUEST).json({'message' : 'Bad request. No such endpoint'});
+    res.status(HTTP_STATUS_BAD_REQUEST).json({ 'message': 'Bad request. No such endpoint' });
 })
 
 app.get('/user/:id', (req, res) => {
@@ -36,3 +36,16 @@ app.get('/user/:id', (req, res) => {
     });
 });
 
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+
+process.on('SIGINT', () => {
+    db.close((err) => {
+        if (err) {
+            return console.error(err.message);
+        }
+        console.log('Close the database connection.');
+        process.exit(0);
+    });
+});
