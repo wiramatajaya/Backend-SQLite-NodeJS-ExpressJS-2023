@@ -15,3 +15,9 @@ let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READONLY, (err) => {
     }
     console.log('Connected to the SQlite database.');
 });
+
+app.get('/', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(HTTP_STATUS_BAD_REQUEST).json({'message' : 'Bad request. No such endpoint'});
+})
+
