@@ -92,6 +92,24 @@ app.post('/user', (req, res) => {
     });
 });
 
+app.patch('/user/:id', (req, res) => {
+    if (!req.body.first || !req.body.last || !req.body.dept) {
+        return res.status(HTTP_STATUS_BAD_REQUEST).json({ 'message': 'Bad request. Missing required body parameters' });
+    }
+    let sql = `UPDATE Users SET first = ?, last = ?, dept = ? WHERE id = ?`;
+    let params = [req.body.first, req.body.last, req.body.dept, req.params.id];
+    db.run(sql, params, function(err) {
+        if (err) {
+            res.status(HTTP_STATUS_INTERNAL_SERVER_ERROR).json({ "error": err.message });
+            return;
+        }
+        res.status(HTTP_STATUS_OK).json({
+            "message": "User updated successfully",
+            "changes": this.changes
+        });
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
