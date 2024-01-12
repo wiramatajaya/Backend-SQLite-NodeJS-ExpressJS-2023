@@ -22,6 +22,9 @@ This Node.js project implements a RESTful API with SQLite.
 - `GET /user`: Returns all users in JSON format.
 - `GET /user/:id`: Returns the user with the specified ID in JSON format.
 - `GET /user?last=<last>&dept=<dept>`: Returns users with the specified last name and department in JSON format.
+- `POST /user`: Adds a new user. The user's first name, last name, and department should be sent in the body of the request as JSON.
+- `PATCH /user/:id`: Updates the user with the specified ID. The user's new first name, last name, and department should be sent in the body of the request as JSON.
+- `DELETE /user/:id`: Deletes the user with the specified ID.
 
 ## Database
 
