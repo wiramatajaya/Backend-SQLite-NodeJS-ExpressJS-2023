@@ -19,12 +19,17 @@ let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READONLY, (err) => {
     console.log('Connected to the SQlite database.');
 });
 
+app.use(bodyParser.json()); // for parsing application/json
+
 app.get('/', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(HTTP_STATUS_BAD_REQUEST).json({ 'message': 'Bad request. No such endpoint' });
 })
 
 app.get('/user/:id', (req, res) => {
+    if (!req.params.id) {
+        return res.status(HTTP_STATUS_BAD_REQUEST).json({ 'message': 'Bad request. Missing ID parameter' });
+    }
     let sql = `SELECT * FROM Users WHERE id = ?`;
     let params = [req.params.id];
     db.get(sql, params, (err, row) => {
@@ -53,28 +58,27 @@ app.get('/user', (req, res) => {
                 return res.status(HTTP_STATUS_NOT_FOUND).json({ "message": 'No users found' });
             }
             res.setHeader('Content-Type', 'application/json');
-            res.send(rows);
+            res.status(HTTP_STATUS_OK).json(rows);
         });
     } else if (Object.keys(req.query).length === 0) {
         db.all(`SELECT * FROM Users`, (err, rows) => {
             if (err) {
-                throw err;
+                res.status(HTTP_STATUS_INTERNAL_SERVER_ERROR).json({ "error": err.message });
+                return;
             }
             res.setHeader('Content-Type', 'application/json');
-            res.send(rows);
+            res.status(HTTP_STATUS_OK).json(rows);
         });
     } else {
         res.status(HTTP_STATUS_BAD_REQUEST).json({ 'message': 'Bad request. Missing required query parameters' });
     }
 });
 
-app.use(bodyParser.json()); // for parsing application/json
 
 app.post('/user', (req, res) => {
     if (!req.body.first || !req.body.last || !req.body.dept) {
         return res.status(HTTP_STATUS_BAD_REQUEST).json({ 'message': 'Bad request. Missing required body parameters' });
     }
-
     let sql = `INSERT INTO Users (first, last, dept) VALUES (?, ?, ?)`;
     let params = [req.body.first, req.body.last, req.body.dept];
     db.run(sql, params, function(err) {
