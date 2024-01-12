@@ -11,7 +11,7 @@ const DB_PATH = './database.db';
 const bodyParser = require('body-parser');
 
 // Open database in memory
-let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READONLY, (err) => {
+let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         console.error(err.message);
         process.exit(1); // Exit if database connection fails
@@ -73,7 +73,6 @@ app.get('/user', (req, res) => {
         res.status(HTTP_STATUS_BAD_REQUEST).json({ 'message': 'Bad request. Missing required query parameters' });
     }
 });
-
 
 app.post('/user', (req, res) => {
     if (!req.body.first || !req.body.last || !req.body.dept) {
