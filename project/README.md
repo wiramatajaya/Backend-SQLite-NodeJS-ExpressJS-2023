@@ -1,11 +1,11 @@
-Author: Ej Sobrepeña
-Date: 2023-01-11
+# Node.js RESTful API with SQLite
 
-This Node.js project implements a RESTful API with SQLite.
+This project is a Node.js application that implements a RESTful API using SQLite for managing user data.
 
 ## Prerequisites
 
-1. Node.js and npm must be installed on your system.
+- Node.js and npm must be installed on your system.
+- SQLite command-line utility for running SQL scripts.
 
 ## Setup
 
@@ -38,3 +38,6 @@ You can run these scripts using the SQLite command-line utility with the followi
 
 ```bash
 sqlite3 database.db < sql/<script>.sql
+```
+
+Please note that these operations will directly affect the database and cannot be undone. Always ensure to have a backup of your data.
