@@ -1,7 +1,7 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const app = express();
-const port = 8000;
+const port = 2001;
 
 const HTTP_STATUS_OK = 200;
 const HTTP_STATUS_BAD_REQUEST = 400;
@@ -20,11 +20,6 @@ let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READWRITE, (err) => {
 });
 
 app.use(bodyParser.json()); // for parsing application/json
-
-app.get('/', (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(HTTP_STATUS_BAD_REQUEST).json({ 'message': 'Bad request. No such endpoint' });
-})
 
 app.get('/user/:id', (req, res) => {
     if (!req.params.id) {
@@ -45,7 +40,7 @@ app.get('/user/:id', (req, res) => {
     });
 });
 
-app.get('/user', (req, res) => {
+app.get('/', (req, res) => {
     if (req.query.last && req.query.dept) {
         let sql = `SELECT * FROM Users WHERE LOWER(last) = ? AND dept = ?`;
         let params = [req.query.last.toLowerCase(), req.query.dept];
