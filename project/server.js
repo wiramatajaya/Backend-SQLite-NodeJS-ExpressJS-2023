@@ -9,8 +9,9 @@ const HTTP_STATUS_NOT_FOUND = 404;
 const HTTP_STATUS_INTERNAL_SERVER_ERROR = 500;
 const DB_PATH = './database.db';
 const bodyParser = require('body-parser');
-
+const cors = require('cors')
 // Open database in memory
+app.use(cors())
 let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         console.error(err.message);
